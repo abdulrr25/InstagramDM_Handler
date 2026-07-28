@@ -1,0 +1,28 @@
+{
+  "name": "instagram-dm-handler",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-only Instagram DM triage tool. Polls, classifies, and surfaces real inquiries.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx src/dev.ts",
+    "poll": "tsx src/scripts/poll.ts",
+    "seed": "tsx src/scripts/seed.ts",
+    "eval": "tsx src/scripts/eval.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "better-sqlite3": "^11.8.1",
+    "hono": "^4.6.14",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^20.17.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

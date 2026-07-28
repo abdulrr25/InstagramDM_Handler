@@ -1,0 +1,682 @@
+[
+  {
+    "external_id": "demo_001",
+    "thread_id": "t_horizon",
+    "minutes_ago": 6,
+    "text": "Hi! We're launching a sustainable sneaker brand in September and need a 30s hero video + 6 cutdowns for paid social. Budget is around $12k. Can you take this on?",
+    "sender": {
+      "id": "ig_horizon",
+      "username": "horizon.footwear",
+      "name": "Horizon Footwear",
+      "bio": "Sustainable sneakers. Launching soon.",
+      "followers_count": 1840,
+      "follows_count": 320,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_002",
+    "thread_id": "t_maria",
+    "minutes_ago": 14,
+    "text": "hey do u do wedding video? need someone for oct 3 in austin, small budget but real",
+    "sender": {
+      "id": "ig_maria",
+      "username": "maria.k.austin",
+      "name": "Maria",
+      "bio": "",
+      "followers_count": 210,
+      "follows_count": 498,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_003",
+    "thread_id": "t_growthlab",
+    "minutes_ago": 21,
+    "text": "Hello, I hope this message finds you well. I'm reaching out from GrowthLab Studios. We partner with select creative brands to scale their organic reach through a proven content framework. We have a limited number of onboarding slots this quarter and thought you'd be a great fit. Would you be open to a quick 15-minute call to explore a partnership?",
+    "sender": {
+      "id": "ig_growthlab",
+      "username": "growthlab.studios",
+      "name": "GrowthLab Studios",
+      "bio": "We scale creative brands. 400+ partners. DM to grow.",
+      "followers_count": 28400,
+      "follows_count": 26100,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_004",
+    "thread_id": "t_devon",
+    "minutes_ago": 33,
+    "text": "The export keeps failing at 90% on the 4k preset — says 'render timeout'. Was working yesterday. Been a subscriber since March. Anything I can try?",
+    "sender": {
+      "id": "ig_devon",
+      "username": "devon.makes",
+      "name": "Devon",
+      "bio": "editor / colorist",
+      "followers_count": 3120,
+      "follows_count": 890,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_005",
+    "thread_id": "t_lumen",
+    "minutes_ago": 41,
+    "text": "Partnership opportunity!! We'd love to collaborate. Just cover the shipping ($9.95) and we'll send our product for you to feature. Huge exposure to our 500k audience. Interested?",
+    "sender": {
+      "id": "ig_lumen",
+      "username": "lumen.collab.official",
+      "name": "Lumen Collabs",
+      "bio": "Connecting creators & brands 🌍 link in bio",
+      "followers_count": 61200,
+      "follows_count": 58900,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_006",
+    "thread_id": "t_verifiedspam",
+    "minutes_ago": 52,
+    "text": "🚀 Congrats! You've been selected for our exclusive crypto airdrop. Claim 0.5 BTC before it expires: bit.ly/claim-now-btc. Act fast, only 20 spots left!",
+    "sender": {
+      "id": "ig_cryptoblue",
+      "username": "blue.capital.invest",
+      "name": "Blue Capital",
+      "bio": "Verified investment group 💎 24k community",
+      "followers_count": 44100,
+      "follows_count": 12,
+      "is_verified": true,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_007",
+    "thread_id": "t_priya",
+    "minutes_ago": 63,
+    "text": "Loved your reel on the coffee brand! We're a specialty roaster in Portland opening a second location and want a launch film. What's your process and rough pricing for something in the 3-4k range?",
+    "sender": {
+      "id": "ig_priya",
+      "username": "roast.and.co",
+      "name": "Priya — Roast & Co",
+      "bio": "Specialty coffee roaster · Portland OR",
+      "followers_count": 5400,
+      "follows_count": 610,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_008",
+    "thread_id": "t_follow4follow",
+    "minutes_ago": 74,
+    "text": "f4f? active engagement group, we all like each others posts within 5 min. dm to join 💯",
+    "sender": {
+      "id": "ig_engagepod",
+      "username": "engage.pod.daily",
+      "name": "Engage Pod",
+      "bio": "grow together 📈 f4f l4l",
+      "followers_count": 9100,
+      "follows_count": 9050,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_009",
+    "thread_id": "t_sam",
+    "minutes_ago": 88,
+    "text": "hey saw ur work, might have something coming up next month. will circle back",
+    "sender": {
+      "id": "ig_sam",
+      "username": "sam.builds.things",
+      "name": "Sam",
+      "bio": "founder, small hardware startup",
+      "followers_count": 740,
+      "follows_count": 520,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_010",
+    "thread_id": "t_agencypolish",
+    "minutes_ago": 96,
+    "text": "Hi there — I lead new business at Meridian, a boutique creative agency. We're building a roster of freelance video partners for overflow work from our retainer clients (think national CPG brands). Rates are strong and the work is steady. Could I send over our partner deck?",
+    "sender": {
+      "id": "ig_meridian",
+      "username": "meridian.creative",
+      "name": "Meridian Creative",
+      "bio": "Independent agency. Brand & film. NYC / LDN.",
+      "followers_count": 12800,
+      "follows_count": 940,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_011",
+    "thread_id": "t_tanya",
+    "minutes_ago": 110,
+    "text": "Is there a way to batch-export in vertical and square at once? Can't find it in settings. Paid annual plan if it matters.",
+    "sender": {
+      "id": "ig_tanya",
+      "username": "tanya.creates",
+      "name": "Tanya",
+      "bio": "content creator",
+      "followers_count": 15200,
+      "follows_count": 300,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_012",
+    "thread_id": "t_bulkdm",
+    "minutes_ago": 121,
+    "text": "Hi dear, we provide high quality followers and likes at cheap price. 10k followers = $15 only. real & active. interested? we also do verification badge service ✅",
+    "sender": {
+      "id": "ig_smmpanel",
+      "username": "smm.panel.services",
+      "name": "SMM Services",
+      "bio": "followers · likes · views · verification 🔝 best price",
+      "followers_count": 2100,
+      "follows_count": 7400,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_013",
+    "thread_id": "t_kofi",
+    "minutes_ago": 138,
+    "text": "Good afternoon. My name is Kofi, marketing lead at a mid-size fintech. We have budget approved for a Q4 explainer video series (5 videos). Timeline is tight — first delivery mid-November. Are you available for a call this week?",
+    "sender": {
+      "id": "ig_kofi",
+      "username": "kofi.mensah",
+      "name": "Kofi Mensah",
+      "bio": "Marketing @ a fintech you've probably used",
+      "followers_count": 980,
+      "follows_count": 1100,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_014",
+    "thread_id": "t_hey",
+    "minutes_ago": 149,
+    "text": "hey",
+    "sender": {
+      "id": "ig_ghost",
+      "username": "j_._._x",
+      "name": "",
+      "bio": "",
+      "followers_count": 3,
+      "follows_count": 812,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_015",
+    "thread_id": "t_nadia",
+    "minutes_ago": 160,
+    "text": "we r a gym in miami, want short reels every week, ongoing. how much per month?",
+    "sender": {
+      "id": "ig_nadia",
+      "username": "ironhouse.mia",
+      "name": "Ironhouse Gym",
+      "bio": "Strength gym · Miami · since 2016",
+      "followers_count": 8700,
+      "follows_count": 410,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_016",
+    "thread_id": "t_influencer",
+    "minutes_ago": 176,
+    "text": "Hi! I'm a lifestyle creator with 120k engaged followers. I'd love to feature your service. My rate for a story + reel bundle is $800. Let me know and I'll send my media kit!",
+    "sender": {
+      "id": "ig_bella",
+      "username": "bella.lifestyle",
+      "name": "Bella",
+      "bio": "lifestyle · travel · collabs 📩 120k fam",
+      "followers_count": 121000,
+      "follows_count": 2200,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_017",
+    "thread_id": "t_omar",
+    "minutes_ago": 190,
+    "text": "quick q — does the pro plan include the motion presets or is that a separate add on? about to upgrade my team",
+    "sender": {
+      "id": "ig_omar",
+      "username": "omar.edits",
+      "name": "Omar",
+      "bio": "post house lead",
+      "followers_count": 6400,
+      "follows_count": 720,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_018",
+    "thread_id": "t_realtor",
+    "minutes_ago": 205,
+    "text": "Hello, I'm a realtor and need walkthrough videos for listings, ongoing, maybe 4-5 properties a month. Can we set up a recurring arrangement? Happy to start with one this week as a test.",
+    "sender": {
+      "id": "ig_realtor",
+      "username": "jordan.sells.homes",
+      "name": "Jordan Vale",
+      "bio": "Realtor · $200M+ sold · Denver metro",
+      "followers_count": 4300,
+      "follows_count": 1900,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_019",
+    "thread_id": "t_seopitch",
+    "minutes_ago": 221,
+    "text": "Dear Sir/Madam, I noticed your website is not ranking on Google's first page. We are an award-winning SEO agency and can get you there in 90 days, guaranteed. Reply YES for a free audit report.",
+    "sender": {
+      "id": "ig_seopro",
+      "username": "top.seo.agency.pro",
+      "name": "Top SEO Agency",
+      "bio": "Rank #1 on Google 🚀 500+ clients worldwide",
+      "followers_count": 3300,
+      "follows_count": 6900,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_020",
+    "thread_id": "t_lena",
+    "minutes_ago": 240,
+    "text": "hi, app crashed and lost my project from this morning. is there autosave / any way to recover? kind of panicking, deadline tonight",
+    "sender": {
+      "id": "ig_lena",
+      "username": "lena.motion",
+      "name": "Lena",
+      "bio": "motion designer",
+      "followers_count": 2050,
+      "follows_count": 640,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_021",
+    "thread_id": "t_verifiedlead",
+    "minutes_ago": 262,
+    "text": "Hi — we're the marketing team at Aster (skincare). Planning a spring campaign and want a series of product films. Budget is real, timeline is Q1. Who's the best person to talk specifics with?",
+    "sender": {
+      "id": "ig_aster",
+      "username": "asterskin",
+      "name": "Aster Skincare",
+      "bio": "Clean skincare, clinically backed.",
+      "followers_count": 88400,
+      "follows_count": 210,
+      "is_verified": true,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_022",
+    "thread_id": "t_giveaway",
+    "minutes_ago": 279,
+    "text": "🎉 YOU WON our monthly giveaway! Claim your free iPhone 15 Pro now — just pay $4.99 shipping. Click here before midnight: winners-claim.co/ig",
+    "sender": {
+      "id": "ig_giveaway",
+      "username": "official.giveaway.hub",
+      "name": "Giveaway Hub",
+      "bio": "Winners every day 🎁",
+      "followers_count": 700,
+      "follows_count": 4900,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_023",
+    "thread_id": "t_carlos",
+    "minutes_ago": 295,
+    "text": "hey man love the vibe. we're a taco spot, no big budget but could do a trade + some cash for a fun menu video. down?",
+    "sender": {
+      "id": "ig_carlos",
+      "username": "el.taco.honesto",
+      "name": "El Taco Honesto",
+      "bio": "Tacos. That's it. That's the bio.",
+      "followers_count": 3900,
+      "follows_count": 260,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_024",
+    "thread_id": "t_recruit",
+    "minutes_ago": 312,
+    "text": "Hi! We're hiring remote video editors, $45/hr, flexible hours, weekly pay. No experience needed, we train. Reply INFO to get started and complete your onboarding.",
+    "sender": {
+      "id": "ig_remotejobs",
+      "username": "remote.creative.jobs",
+      "name": "Remote Creative Jobs",
+      "bio": "Work from home 💻 daily openings",
+      "followers_count": 5100,
+      "follows_count": 6200,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_025",
+    "thread_id": "t_yuki",
+    "minutes_ago": 330,
+    "text": "billing charged me twice this month, same card. can you refund the duplicate? order refs in my account under yuki@—",
+    "sender": {
+      "id": "ig_yuki",
+      "username": "yuki.shoots",
+      "name": "Yuki",
+      "bio": "photographer",
+      "followers_count": 4700,
+      "follows_count": 500,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_026",
+    "thread_id": "t_vague1",
+    "minutes_ago": 349,
+    "text": "interesting profile. what do you charge?",
+    "sender": {
+      "id": "ig_anon2",
+      "username": "d.n.m.co",
+      "name": "DNM",
+      "bio": "",
+      "followers_count": 88,
+      "follows_count": 240,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_027",
+    "thread_id": "t_nonprofit",
+    "minutes_ago": 366,
+    "text": "Hello! We're a small nonprofit doing clean-water work and want a 2-minute impact film for our year-end campaign. We have a modest grant of about $5k earmarked. Is that workable?",
+    "sender": {
+      "id": "ig_wellspring",
+      "username": "wellspring.org",
+      "name": "Wellspring Initiative",
+      "bio": "Clean water access · 501(c)(3)",
+      "followers_count": 6600,
+      "follows_count": 380,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_028",
+    "thread_id": "t_dropship",
+    "minutes_ago": 384,
+    "text": "Bro I have a winning product doing 50k/month. I need UGC ads urgently. Can pay per video. But first add me on whatsapp +1—, ig limits my messages. Let's get rich together 💰",
+    "sender": {
+      "id": "ig_hustle",
+      "username": "ecom.hustle.king",
+      "name": "Ecom King",
+      "bio": "6-figure dropshipper 📦 teaching you the game",
+      "followers_count": 19200,
+      "follows_count": 6800,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_029",
+    "thread_id": "t_grace",
+    "minutes_ago": 402,
+    "text": "hii is the student discount still a thing? im on the free plan rn and want to upgrade for a class project due friday",
+    "sender": {
+      "id": "ig_grace",
+      "username": "grace.films.school",
+      "name": "Grace",
+      "bio": "film student 🎬",
+      "followers_count": 430,
+      "follows_count": 690,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_030",
+    "thread_id": "t_bank",
+    "minutes_ago": 420,
+    "text": "URGENT: Your account has unusual login activity and will be suspended in 24h. Verify your identity here to avoid deactivation: ig-secure-verify.net/login",
+    "sender": {
+      "id": "ig_phish",
+      "username": "meta.security.team.help",
+      "name": "Account Security",
+      "bio": "Official support",
+      "followers_count": 12,
+      "follows_count": 0,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_031",
+    "thread_id": "t_theo",
+    "minutes_ago": 441,
+    "text": "We're a Series A SaaS. Need a product launch video + 3 feature spots. Design-forward. Budget 20-25k. Can share the brief on a call — when are you free next week?",
+    "sender": {
+      "id": "ig_theo",
+      "username": "theo.at.flowbase",
+      "name": "Theo",
+      "bio": "Head of Brand @ Flowbase",
+      "followers_count": 2600,
+      "follows_count": 810,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_032",
+    "thread_id": "t_lol",
+    "minutes_ago": 460,
+    "text": "😂😂😂",
+    "sender": {
+      "id": "ig_rando",
+      "username": "vibes.only.247",
+      "name": "vibes",
+      "bio": "just vibes",
+      "followers_count": 640,
+      "follows_count": 1200,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_033",
+    "thread_id": "t_wholesale",
+    "minutes_ago": 480,
+    "text": "Hello, we are a manufacturer of LED screens and stage equipment. Factory direct price. We can OEM. Please add our catalog on WeChat/WhatsApp for wholesale inquiry.",
+    "sender": {
+      "id": "ig_ledfactory",
+      "username": "shenzhen.led.factory",
+      "name": "LED Factory",
+      "bio": "Factory direct · OEM/ODM · worldwide shipping",
+      "followers_count": 1500,
+      "follows_count": 3400,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_034",
+    "thread_id": "t_ava",
+    "minutes_ago": 500,
+    "text": "hey! not sure if this is the right place but i'm thinking about a brand video for my candle shop sometime next year maybe. just poking around for now, what should i know?",
+    "sender": {
+      "id": "ig_ava",
+      "username": "ember.and.ash.candles",
+      "name": "Ava",
+      "bio": "hand-poured candles · small batch",
+      "followers_count": 1700,
+      "follows_count": 900,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_035",
+    "thread_id": "t_pers",
+    "minutes_ago": 521,
+    "text": "Hi, I represent a high-net-worth private client seeking a videographer for a confidential event. Compensation is generous. Please confirm your availability and we'll proceed with the NDA and a deposit.",
+    "sender": {
+      "id": "ig_concierge",
+      "username": "elite.private.concierge",
+      "name": "Elite Concierge",
+      "bio": "Discreet luxury services 🤝 by referral only",
+      "followers_count": 900,
+      "follows_count": 30,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_036",
+    "thread_id": "t_ken",
+    "minutes_ago": 540,
+    "text": "renewed but the invoice still shows the old company name, need it updated for accounting. how do i change billing details?",
+    "sender": {
+      "id": "ig_ken",
+      "username": "ken.studioeast",
+      "name": "Ken",
+      "bio": "owner, StudioEast",
+      "followers_count": 3400,
+      "follows_count": 520,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_037",
+    "thread_id": "t_rae",
+    "minutes_ago": 560,
+    "text": "do u take on music videos?? my single drops in 3 weeks, indie budget like 2k, but the songs a banger i promise 🙏",
+    "sender": {
+      "id": "ig_rae",
+      "username": "rae.sound",
+      "name": "Rae",
+      "bio": "indie artist · new EP soon",
+      "followers_count": 1250,
+      "follows_count": 700,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": false
+    }
+  },
+  {
+    "external_id": "demo_038",
+    "thread_id": "t_nft",
+    "minutes_ago": 580,
+    "text": "gm! we're minting a new PFP collection and want promo animation. we pay in our token $ZAPP (currently mooning 🚀). whitelist spot included. wanna collab fren?",
+    "sender": {
+      "id": "ig_nft",
+      "username": "zapp.nft.official",
+      "name": "ZAPP",
+      "bio": "web3 · PFP · WAGMI 🐸 join the community",
+      "followers_count": 33000,
+      "follows_count": 31000,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_039",
+    "thread_id": "t_dana",
+    "minutes_ago": 600,
+    "text": "Following up on my email from last week about the retail brand shoot — did it land in your inbox? Happy to move forward, we're ready to sign.",
+    "sender": {
+      "id": "ig_dana",
+      "username": "dana.brandhouse",
+      "name": "Dana",
+      "bio": "Producer · Brandhouse",
+      "followers_count": 4100,
+      "follows_count": 1300,
+      "is_verified": false,
+      "follows_you": false,
+      "is_business": true
+    }
+  },
+  {
+    "external_id": "demo_040",
+    "thread_id": "t_max",
+    "minutes_ago": 622,
+    "text": "is there an api? want to hook up our internal tool. on the team plan already. docs link would be great",
+    "sender": {
+      "id": "ig_max",
+      "username": "max.buildsstuff",
+      "name": "Max",
+      "bio": "eng @ a studio",
+      "followers_count": 980,
+      "follows_count": 430,
+      "is_verified": false,
+      "follows_you": true,
+      "is_business": false
+    }
+  }
+]
