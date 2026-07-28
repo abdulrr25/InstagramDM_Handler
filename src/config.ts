@@ -84,6 +84,16 @@ export const config = {
     baseUrl: process.env.GROQ_BASE_URL ?? 'https://api.groq.com/openai/v1',
     model: process.env.GROQ_MODEL ?? 'llama-3.3-70b-versatile',
   },
+  instagram: {
+    // Verified against Meta's Instagram API (Instagram Login), v25.0.
+    accessToken: process.env.IG_ACCESS_TOKEN ?? '',
+    // The business account's own IG-scoped id, used to drop outbound messages.
+    // Optional — resolved from /me when left blank.
+    userId: process.env.IG_USER_ID ?? '',
+    graphHost: process.env.IG_GRAPH_HOST ?? 'graph.instagram.com',
+    apiVersion: process.env.IG_API_VERSION ?? 'v25.0',
+    maxConversationPages: num('IG_MAX_CONVERSATION_PAGES', 10),
+  },
 };
 
 /** Whether a classifier is configured. Without a key the app stays in demo. */
@@ -117,5 +127,11 @@ export function validateConfig(): void {
 
   if (config.source !== 'demo' && config.source !== 'instagram') {
     throw new Error(`SOURCE must be 'demo' or 'instagram', got: ${config.source}`);
+  }
+
+  if (config.source === 'instagram' && config.instagram.accessToken.trim() === '') {
+    throw new Error(
+      'SOURCE=instagram requires IG_ACCESS_TOKEN. See .env.example and README.',
+    );
   }
 }
