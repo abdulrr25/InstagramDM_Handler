@@ -210,4 +210,34 @@ form.row > details[open] > summary { background: var(--row-hover); }
 
 .empty { padding: 40px 16px; color: var(--muted); font-size: 13px; }
 .empty a { color: var(--accent); }
+
+/* Narrow windows: reflow the dense row into three stacked bands instead of
+   letting the four columns overflow. Sender + verdict share the top band,
+   the message gets its own line, and the label buttons wrap along the bottom. */
+@media (max-width: 820px) {
+  form.row > details > summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "who     verdict"
+      "snippet snippet"
+      "actions actions";
+    row-gap: 6px;
+    align-items: center;
+  }
+  form.row > details > summary > .who { grid-area: who; }
+  form.row > details > summary > .snippet {
+    grid-area: snippet;
+    white-space: normal;       /* free to wrap now it has its own line */
+  }
+  form.row > details > summary > .verdict { grid-area: verdict; }
+  form.row > details > summary > .label-actions {
+    grid-area: actions;
+    justify-self: start;
+    flex-wrap: wrap;           /* buttons wrap rather than overflow */
+  }
+  /* The reason is the biggest space hog and least useful when cramped. */
+  .verdict .reason { display: none; }
+  /* Drop the desktop indent that aligned detail under the sender column. */
+  .detail { padding-left: 16px; }
+}
 `;
