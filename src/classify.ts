@@ -168,29 +168,99 @@ export async function classifyMessage(
   };
 }
 
+// --- Offline demo classifier -------------------------------------------------
+// Used ONLY when no GROQ_API_KEY is set, so the whole app — classified board and
+// eval — works with zero credentials (constraint: usable before any API access).
+// It is a transparent keyword+metadata heuristic, stored with model
+// "demo-heuristic" so it is never mistaken for the LLM. Deliberately biased away
+// from routing genuine messages to noise: a hidden lead is the expensive error.
+
+const NOISE_HINTS = [
+  'crypto', 'airdrop', 'btc', 'bitcoin', 'nft', 'web3', 'wagmi', 'token', 'mint',
+  'followers', 'f4f', 'l4l', 'engagement group', 'smm', 'likes at cheap',
+  'seo', 'rank #1', "google's first page", 'giveaway', 'you won', 'iphone',
+  'claim', 'verify your identity', 'suspended', 'unusual login', 'whatsapp',
+  'wechat', 'factory direct', 'oem', 'wholesale', 'cover the shipping',
+  'cover shipping', 'get rich', 'dropship', 'winning product', 'media kit',
+  'exposure to our', 'deposit', 'nda and a deposit',
+];
+const SUPPORT_HINTS = [
+  'export', 'render', 'timeout', 'crash', 'autosave', 'recover', 'billing',
+  'refund', 'invoice', 'charged', 'subscriber', 'subscription', 'upgrade',
+  'plan', 'student discount', 'batch-export', 'preset', 'api', 'docs',
+  'settings', 'annual plan', 'team plan',
+];
+const LEAD_HINTS = [
+  'budget', 'need a', 'need someone', 'launch film', 'launch video', 'hero video',
+  'explainer', 'campaign', 'shoot', 'walkthrough', 'reels every', 'music video',
+  'product film', 'ready to sign', 'retainer', 'per month', 'project',
+];
+
+function countHits(haystack: string, hints: string[]): number {
+  return hints.reduce((n, h) => (haystack.includes(h) ? n + 1 : n), 0);
+}
+
+export function demoClassify(row: MessageRow): Verdict {
+  const hay = `${row.text} ${row.sender.bio ?? ''}`.toLowerCase();
+  const s = row.sender;
+  const model = 'demo-heuristic';
+
+  let noise = countHits(hay, NOISE_HINTS);
+  const support = countHits(hay, SUPPORT_HINTS);
+  const lead = countHits(hay, LEAD_HINTS);
+
+  // Metadata smell: follows many, followed by few — classic outreach account.
+  if (
+    s.followers_count !== undefined &&
+    s.follows_count !== undefined &&
+    s.follows_count > s.followers_count * 1.5 &&
+    s.follows_count > 1000
+  ) {
+    noise += 1;
+  }
+  // An existing user (follows the account) leans support/real over noise.
+  const isFollower = s.follows_you === true;
+
+  if (noise >= 1 && noise >= support && noise >= lead && !isFollower) {
+    return { route: 'noise', confidence: 0.9, reason: 'Mass-outreach / spam signals in text and metadata.', model };
+  }
+  if (support >= 1 && support >= lead) {
+    return { route: 'support', confidence: 0.8, reason: 'Existing user with a product or billing question.', model };
+  }
+  if (lead >= 1) {
+    return { route: 'lead', confidence: 0.85, reason: 'Names a concrete need, budget, or timeline.', model };
+  }
+  return { route: 'maybe', confidence: 0.5, reason: 'Vague interest with no specifics.', model };
+}
+
 export interface ClassifyResult {
-  skipped: boolean;
+  mode: 'groq' | 'demo';
   classified: number;
   errors: number;
 }
 
 /**
- * Classify every message that has never been scored. No-op (skipped) when no
- * classifier is configured, so the app runs fully in demo mode with zero creds.
+ * Classify every message that has never been scored. Uses Groq when a key is
+ * set, otherwise the offline heuristic — so the app is fully usable with zero
+ * credentials.
  */
 export async function classifyPending(): Promise<ClassifyResult> {
-  if (!hasClassifier()) {
-    return { skipped: true, classified: 0, errors: 0 };
-  }
-
+  const useGroq = hasClassifier();
   const pending = getUnclassifiedMessages();
-  if (pending.length === 0) return { skipped: false, classified: 0, errors: 0 };
+  if (pending.length === 0) {
+    return { mode: useGroq ? 'groq' : 'demo', classified: 0, errors: 0 };
+  }
 
   const examples = getLabeledExamples(20);
   let classified = 0;
   let errors = 0;
 
   for (const row of pending) {
+    if (!useGroq) {
+      insertClassification(row.id, demoClassify(row));
+      classified++;
+      continue;
+    }
     try {
       const verdict = await classifyMessage(row, examples);
       insertClassification(row.id, verdict);
@@ -204,7 +274,7 @@ export async function classifyPending(): Promise<ClassifyResult> {
     }
   }
 
-  return { skipped: false, classified, errors };
+  return { mode: useGroq ? 'groq' : 'demo', classified, errors };
 }
 
 // Re-exported for callers that want to describe a route in logs.

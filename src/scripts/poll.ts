@@ -4,12 +4,10 @@ import { runPoll } from '../poll.js';
 
 async function main() {
   validateConfig();
-  const { fetched, inserted, classified, classifierSkipped } = await runPoll();
-  const cls = classifierSkipped
-    ? 'classifier=off (no GROQ_API_KEY)'
-    : `classified=${classified}`;
+  const { fetched, inserted, classified, mode } = await runPoll();
   console.log(
-    `[poll] source=${config.source} fetched=${fetched} inserted=${inserted} ${cls}`,
+    `[poll] source=${config.source} fetched=${fetched} inserted=${inserted} ` +
+      `classified=${classified} (${mode})`,
   );
 }
 

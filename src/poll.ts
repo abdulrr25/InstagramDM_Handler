@@ -12,7 +12,7 @@ export interface PollResult {
   fetched: number;
   inserted: number;
   classified: number;
-  classifierSkipped: boolean;
+  mode: 'groq' | 'demo';
 }
 
 export async function runPoll(): Promise<PollResult> {
@@ -30,7 +30,7 @@ export async function runPoll(): Promise<PollResult> {
     fetched: messages.length,
     inserted,
     classified: cls.classified,
-    classifierSkipped: cls.skipped,
+    mode: cls.mode,
   };
 }
 

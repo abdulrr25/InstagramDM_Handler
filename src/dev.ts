@@ -19,7 +19,7 @@ async function main() {
   startServer();
   const classifier = hasClassifier()
     ? `classifier=${config.groq.model}`
-    : 'classifier=off (set GROQ_API_KEY to enable)';
+    : 'classifier=demo-heuristic (offline; set GROQ_API_KEY for the LLM)';
   console.log(
     `[dev] source=${config.source} ${classifier} polling every ${config.pollIntervalMs}ms`,
   );
