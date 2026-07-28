@@ -131,6 +131,40 @@ export function getView(tab: Tab): ViewData {
   };
 }
 
+/** Messages the classifier has never scored, oldest first (so a poll clears
+ *  the backlog in arrival order). */
+export function getUnclassifiedMessages(): MessageRow[] {
+  return getAllRows()
+    .filter((r) => r.classification === null)
+    .sort((a, b) => a.received_at.getTime() - b.received_at.getTime());
+}
+
+/** The owner's most recent hand-labelled messages, for few-shot prompting. */
+export function getLabeledExamples(limit: number): MessageRow[] {
+  return getAllRows()
+    .filter((r) => r.human_route !== null)
+    .slice(0, limit); // getAllRows is newest-first
+}
+
+/** Append a model verdict. Never touches messages.human_route. */
+export function insertClassification(
+  messageId: number,
+  c: { route: string; confidence: number; reason: string; model: string },
+): void {
+  const db = getDb();
+  db.prepare(
+    `INSERT INTO classifications (message_id, route, confidence, reason, model, created_at)
+     VALUES (?, ?, ?, ?, ?, ?)`,
+  ).run(
+    messageId,
+    c.route,
+    c.confidence,
+    c.reason,
+    c.model,
+    new Date().toISOString(),
+  );
+}
+
 /** Record a human label. Validates the route against config. */
 export function setHumanLabel(messageId: number, route: string): void {
   if (!routeIds.includes(route)) {

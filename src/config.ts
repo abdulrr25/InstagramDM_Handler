@@ -78,7 +78,18 @@ export const config = {
   pollIntervalMs: num('POLL_INTERVAL_MS', 60_000),
   archiveThreshold: num('ARCHIVE_THRESHOLD', 1.1),
   dbPath: process.env.DB_PATH ?? './data/inbox.db',
+  groq: {
+    // OpenAI-compatible endpoint. Swapping providers is a base-URL change.
+    apiKey: process.env.GROQ_API_KEY ?? '',
+    baseUrl: process.env.GROQ_BASE_URL ?? 'https://api.groq.com/openai/v1',
+    model: process.env.GROQ_MODEL ?? 'llama-3.3-70b-versatile',
+  },
 };
+
+/** Whether a classifier is configured. Without a key the app stays in demo. */
+export function hasClassifier(): boolean {
+  return config.groq.apiKey.trim().length > 0;
+}
 
 /**
  * Validate invariants at startup and fail loudly. Called by every entrypoint.
