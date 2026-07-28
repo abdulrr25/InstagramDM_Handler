@@ -1,7 +1,7 @@
-// `npm run dev` — Phase 1: validate config and poll on a timer.
-// Phase 2 adds the local server on top of this loop.
+// `npm run dev` — serve the review page on localhost and poll on a timer.
 import { config, validateConfig } from './config.js';
 import { runPoll } from './poll.js';
+import { startServer } from './server.js';
 
 async function tick() {
   try {
@@ -16,6 +16,7 @@ async function tick() {
 
 async function main() {
   validateConfig();
+  startServer();
   console.log(
     `[dev] source=${config.source} polling every ${config.pollIntervalMs}ms`,
   );

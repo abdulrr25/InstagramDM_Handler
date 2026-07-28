@@ -19,6 +19,31 @@ export interface Sender {
   is_business?: boolean;
 }
 
+/** The model's verdict for one message, as stored. */
+export interface Classification {
+  route: string;
+  confidence: number;
+  reason: string;
+  model: string;
+  created_at: string;
+}
+
+/** A message joined with its latest classification, for the UI and eval. */
+export interface MessageRow {
+  id: number;
+  external_id: string;
+  thread_id: string;
+  sender: Sender;
+  text: string;
+  received_at: Date;
+  status: string;
+  /** Human label. Null until the owner labels it. Never model-written. */
+  human_route: string | null;
+  raw: unknown;
+  /** Most recent model verdict, or null if never classified. */
+  classification: Classification | null;
+}
+
 /** A single inbound direct message, normalized across sources. */
 export interface Message {
   /** Platform message id. Unique per message; used for dedupe. */
