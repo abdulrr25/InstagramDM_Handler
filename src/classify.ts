@@ -77,8 +77,12 @@ interface ChatMessage {
 /** Build the chat with up to 20 recent hand-labelled messages as few-shot. */
 function buildMessages(row: MessageRow, examples: MessageRow[]): ChatMessage[] {
   const msgs: ChatMessage[] = [{ role: 'system', content: systemPrompt() }];
-  // Oldest example first reads more naturally as a demonstration sequence.
-  for (const ex of [...examples].reverse()) {
+  // Never show the model the message it is about to classify — a message
+  // labelled before it was scored is in both the queue and the examples, and
+  // feeding its own label back would leak the answer. Oldest example first
+  // reads more naturally as a demonstration sequence.
+  const shots = examples.filter((e) => e.id !== row.id);
+  for (const ex of [...shots].reverse()) {
     msgs.push({ role: 'user', content: formatMessageForPrompt(ex) });
     msgs.push({
       role: 'assistant',

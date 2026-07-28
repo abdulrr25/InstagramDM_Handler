@@ -21,6 +21,9 @@ export function createApp(): Hono {
     return c.body(STYLES);
   });
 
+  // Avoid a 404 on every page load; this is a local tool with no icon.
+  app.get('/favicon.ico', (c) => c.body(null, 204));
+
   app.get('/', (c) => {
     const tab = parseTab(c.req.query('tab'));
     const { rows, counts } = getView(tab);
