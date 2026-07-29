@@ -17,13 +17,15 @@ export const routes: Route[] = [
     id: 'lead',
     label: 'Real lead',
     action: 'notify',
-    description: 'Names a specific need, brand, budget, or timeline.',
+    description:
+      'Wants to hire Morphic or buy/upgrade a plan — names a specific project, ' +
+      'brand, budget, or timeline.',
   },
   {
     id: 'support',
     label: 'Support',
     action: 'notify',
-    description: 'Existing user with a problem or product question.',
+    description: 'Existing Morphic user with a product, account, or billing question.',
   },
   {
     id: 'maybe',
@@ -78,6 +80,15 @@ export const config = {
   pollIntervalMs: num('POLL_INTERVAL_MS', 60_000),
   archiveThreshold: num('ARCHIVE_THRESHOLD', 1.1),
   dbPath: process.env.DB_PATH ?? './data/inbox.db',
+  // One or two sentences on whose inbox this is. Fed to the classifier so it
+  // knows what a "lead" means for this business. Override with BUSINESS_CONTEXT.
+  businessContext:
+    process.env.BUSINESS_CONTEXT ??
+    'This inbox belongs to Morphic, an AI video generation platform used by ' +
+      'brands, agencies, studios, and creators to produce films, ads, and ' +
+      'social video. A real lead wants to hire Morphic or buy/upgrade a plan ' +
+      'for a specific project; support is an existing Morphic user with a ' +
+      'product, account, or billing question.',
   groq: {
     // OpenAI-compatible endpoint. Swapping providers is a base-URL change.
     apiKey: process.env.GROQ_API_KEY ?? '',

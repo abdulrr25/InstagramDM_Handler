@@ -58,6 +58,7 @@ function systemPrompt(): string {
   return (
     `You triage inbound Instagram DMs for a business owner. Assign each message ` +
     `to exactly one route.\n\n` +
+    `About this business: ${config.businessContext}\n\n` +
     `Routes:\n${routeList}\n\n` +
     `The sender's metadata (follower/following counts, bio, verification, whether ` +
     `they follow the account) is often a stronger signal than the message text — ` +
