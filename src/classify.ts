@@ -98,32 +98,62 @@ function buildMessages(row: MessageRow, examples: MessageRow[]): ChatMessage[] {
   return msgs;
 }
 
-/** POST to the OpenAI-compatible endpoint. Throws on transport/API errors. */
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** How long to wait after a 429, from the Retry-After header or the message. */
+function retryAfterMs(res: Response, body: string): number | null {
+  const header = res.headers.get('retry-after');
+  if (header) {
+    const secs = Number(header);
+    if (Number.isFinite(secs)) return Math.ceil(secs * 1000);
+  }
+  // Groq embeds "try again in 1.155s" in the error message.
+  const m = body.match(/try again in ([\d.]+)s/i);
+  if (m) return Math.ceil(Number(m[1]) * 1000);
+  return null;
+}
+
+/**
+ * POST to the OpenAI-compatible endpoint. Transparently waits out rate limits
+ * (429) using the server's Retry-After hint, up to a few attempts. Throws on
+ * other transport/API errors.
+ */
 async function callGroq(messages: ChatMessage[]): Promise<string> {
-  const res = await fetch(`${config.groq.baseUrl}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${config.groq.apiKey}`,
-    },
-    body: JSON.stringify({
-      model: config.groq.model,
-      temperature: 0,
-      max_tokens: 200,
-      response_format: { type: 'json_object' },
-      messages,
-    }),
-  });
-  if (!res.ok) {
+  const MAX_RATE_LIMIT_RETRIES = 6;
+  for (let attempt = 0; ; attempt++) {
+    const res = await fetch(`${config.groq.baseUrl}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${config.groq.apiKey}`,
+      },
+      body: JSON.stringify({
+        model: config.groq.model,
+        temperature: 0,
+        max_tokens: 200,
+        response_format: { type: 'json_object' },
+        messages,
+      }),
+    });
+
+    if (res.ok) {
+      const data = (await res.json()) as {
+        choices?: Array<{ message?: { content?: string } }>;
+      };
+      const content = data.choices?.[0]?.message?.content;
+      if (!content) throw new Error('Groq API returned no content');
+      return content;
+    }
+
     const body = await res.text().catch(() => '');
+    if (res.status === 429 && attempt < MAX_RATE_LIMIT_RETRIES) {
+      // Wait the server-suggested time (plus a little), then retry the same call.
+      const wait = (retryAfterMs(res, body) ?? Math.min(2000 * 2 ** attempt, 30_000)) + 250;
+      await sleep(wait);
+      continue;
+    }
     throw new Error(`Groq API ${res.status}: ${body.slice(0, 300)}`);
   }
-  const data = (await res.json()) as {
-    choices?: Array<{ message?: { content?: string } }>;
-  };
-  const content = data.choices?.[0]?.message?.content;
-  if (!content) throw new Error('Groq API returned no content');
-  return content;
 }
 
 /** Parse + validate model output. Returns null on any parse/validation failure. */
@@ -259,6 +289,7 @@ export async function classifyPending(): Promise<ClassifyResult> {
   const examples = getLabeledExamples(20);
   let classified = 0;
   let errors = 0;
+  let consecutiveErrors = 0;
 
   for (const row of pending) {
     if (!useGroq) {
@@ -270,12 +301,18 @@ export async function classifyPending(): Promise<ClassifyResult> {
       const verdict = await classifyMessage(row, examples);
       insertClassification(row.id, verdict);
       classified++;
+      consecutiveErrors = 0;
     } catch (err) {
-      // Transport/API error — leave unclassified, retry next cycle. One bad
-      // call usually means the API is down, so stop hammering it this round.
+      // Rate limits are already handled inside callGroq, so a throw here is a
+      // real error. Skip this message (it stays unclassified and retries next
+      // cycle) rather than abandoning the whole batch — but bail if the API is
+      // clearly down, to avoid hammering it.
       console.error(`[classify] ${row.external_id}:`, (err as Error).message);
       errors++;
-      break;
+      if (++consecutiveErrors >= 5) {
+        console.error('[classify] too many consecutive errors, stopping this round');
+        break;
+      }
     }
   }
 

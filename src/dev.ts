@@ -3,7 +3,14 @@ import { config, hasClassifier, validateConfig } from './config.js';
 import { runPoll } from './poll.js';
 import { startServer } from './server.js';
 
+// Guard against overlapping ticks: a poll can outlast the interval (rate-limit
+// backoff on a large backlog), and two concurrent runs would classify — and
+// insert — the same messages twice. If one is still running, skip this tick.
+let polling = false;
+
 async function tick() {
+  if (polling) return;
+  polling = true;
   try {
     const { fetched, inserted, classified } = await runPoll();
     if (inserted > 0 || classified > 0) {
@@ -11,6 +18,8 @@ async function tick() {
     }
   } catch (err) {
     console.error('[poll] failed:', err);
+  } finally {
+    polling = false;
   }
 }
 
