@@ -130,7 +130,11 @@ async function callGroq(messages: ChatMessage[]): Promise<string> {
       body: JSON.stringify({
         model: config.groq.model,
         temperature: 0,
-        max_tokens: 200,
+        // Ceiling, not a target — the JSON verdict is tiny. Kept generous so a
+        // thinking-capable model (e.g. Claude) has room to reason before the
+        // answer instead of truncating it. response_format is honored by
+        // Groq/OpenAI and harmlessly ignored by Anthropic's compat endpoint.
+        max_tokens: 1024,
         response_format: { type: 'json_object' },
         messages,
       }),
