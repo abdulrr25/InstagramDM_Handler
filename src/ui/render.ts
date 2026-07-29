@@ -199,7 +199,7 @@ export function page(opts: {
     `</head><body>` +
     `<header>` +
     `<div class="masthead"><h1>DM triage</h1>` +
-    `<span class="sub">local · never sends · newest first</span></div>` +
+    `<span class="sub">local · never sends · grouped by route</span></div>` +
     tabsNav(tab, counts) +
     `<div class="keyhint">Label the top row with your browser's access key + ${keyLegend}</div>` +
     `</header>` +

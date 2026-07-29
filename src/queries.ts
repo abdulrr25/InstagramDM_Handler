@@ -6,6 +6,7 @@ import {
   config,
   routeIds,
   notifyRouteIds,
+  UNKNOWN_ROUTE,
 } from './config.js';
 import type { MessageRow, Sender } from './types.js';
 
@@ -113,6 +114,28 @@ function filterTab(rows: MessageRow[], tab: Tab): MessageRow[] {
   }
 }
 
+/**
+ * Sort order within a tab: group by route in config order (lead, support,
+ * maybe, then noise), unclassified after those, unknown last — and newest
+ * first within each group. Grouping keeps the list from reading as a random
+ * mix of leads and spam interleaved purely by time.
+ */
+function routeRank(row: MessageRow): number {
+  const r = effectiveRoute(row);
+  if (r === null) return 50; // unclassified — still needs a look
+  if (r === UNKNOWN_ROUTE) return 100; // model failures, always last
+  const i = routeIds.indexOf(r);
+  return i >= 0 ? i : 60;
+}
+
+function sortForView(rows: MessageRow[]): MessageRow[] {
+  return [...rows].sort((a, b) => {
+    const byRoute = routeRank(a) - routeRank(b);
+    if (byRoute !== 0) return byRoute;
+    return b.received_at.getTime() - a.received_at.getTime();
+  });
+}
+
 export interface ViewData {
   rows: MessageRow[];
   counts: Record<Tab, number>;
@@ -121,7 +144,7 @@ export interface ViewData {
 export function getView(tab: Tab): ViewData {
   const all = getAllRows();
   return {
-    rows: filterTab(all, tab),
+    rows: sortForView(filterTab(all, tab)),
     counts: {
       needs: filterTab(all, 'needs').length,
       all: all.length,
